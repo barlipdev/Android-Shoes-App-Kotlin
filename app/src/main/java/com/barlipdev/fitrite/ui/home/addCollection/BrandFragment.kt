@@ -18,7 +18,7 @@ import com.barlipdev.fitrite.domain.Brand
 import com.barlipdev.fitrite.ui.home.addCollection.BrandViewModel
 
 class BrandFragment : Fragment() {
-
+//test
     private val viewModel: BrandViewModel by lazy { 
         val activity = requireNotNull(this.activity){
             "You can only access the viewModel after onViewCreated()"
