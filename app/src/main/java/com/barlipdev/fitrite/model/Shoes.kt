@@ -1,4 +1,4 @@
 package com.barlipdev.fitrite.model
 
-class Shoes {
+data class Shoes(val shoesId: Int) {
 }

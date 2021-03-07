@@ -1,4 +1,4 @@
 package com.barlipdev.fitrite.model
 
-class Brand {
+data class Brand(val brandId: Int, val shoesList: List<Shoes>, val brandName: String, val brandImageSrc: String) {
 }

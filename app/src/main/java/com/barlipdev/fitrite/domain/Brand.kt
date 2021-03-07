@@ -1,4 +1,6 @@
 package com.barlipdev.fitrite.domain
 
-class Brand {
-}
+data class Brand(
+    val name: String,
+    val image: String
+)
