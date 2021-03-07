@@ -5,7 +5,7 @@
     <data>
         <variable
             name="brand"
-            type="com.barlipdev.fitrite.model.Brand" />
+            type="com.barlipdev.fitrite.domain.Brand" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,7 +56,7 @@
                     android:layout_alignBottom="@+id/brand_photo"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="1dp"
-                    android:text="Adidas"
+                    android:text="@{brand.name}"
                     android:textSize="30dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
