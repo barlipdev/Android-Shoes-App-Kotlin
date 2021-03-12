@@ -22,6 +22,7 @@ class BrandFragment : Fragment() {
     private val viewModel: BrandViewModel by lazy { 
         val activity = requireNotNull(this.activity){
             "You can only access the viewModel after onViewCreated()"
+            
         }
         ViewModelProvider(this,BrandViewModel.Factory(activity.application)).get(BrandViewModel::class.java)
     }
