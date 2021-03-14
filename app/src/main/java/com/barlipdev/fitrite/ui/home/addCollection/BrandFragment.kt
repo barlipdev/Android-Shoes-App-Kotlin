@@ -2,10 +2,12 @@ package com.barlipdev.fitrite.ui.home.addCollection
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -18,11 +20,10 @@ import com.barlipdev.fitrite.domain.Brand
 import com.barlipdev.fitrite.ui.home.addCollection.BrandViewModel
 
 class BrandFragment : Fragment() {
-//test
     private val viewModel: BrandViewModel by lazy { 
         val activity = requireNotNull(this.activity){
             "You can only access the viewModel after onViewCreated()"
-            
+
         }
         ViewModelProvider(this,BrandViewModel.Factory(activity.application)).get(BrandViewModel::class.java)
     }
@@ -65,7 +66,9 @@ class BrandFragment : Fragment() {
     }
 
     class BrandClick(val block: (Brand) -> Unit){
-        fun onClick(brand: Brand) = block(brand)
+        fun onClick(brand: Brand){
+            Log.d("Click",brand.name)
+        }
     }
 
     class BrandAdapter(val callback: BrandClick) : RecyclerView.Adapter<BrandViewHolder>(){
@@ -88,6 +91,7 @@ class BrandFragment : Fragment() {
         override fun onBindViewHolder(holder: BrandViewHolder, position: Int) {
             holder.viewDataBinding.also {
                 it.brand = brands[position]
+                it.callbackBrand = callback
             }
         }
 
