@@ -64,6 +64,8 @@
         android:id="@+id/collectionList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbars="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/collectionLabel"
         app:listData="@{viewModel.properties}"/>
