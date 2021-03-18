@@ -12,17 +12,20 @@ import kotlinx.coroutines.launch
 class BrandViewModel(application: Application) : AndroidViewModel(application) {
     private val database = getDatabase(application)
     private val brandsRepository = BrandsRepository(database)
-    var brandList: LiveData<List<Brand>>
+
 
     init {
-        viewModelScope.launch{
+        refreshData()
+    }
+
+    private fun refreshData(){
+        viewModelScope.launch {
             brandsRepository.refreshBrands()
             Log.i("testBrand", brandsRepository.brands.value?.size.toString())
         }
-        brandList = brandsRepository.brands
     }
-    //val brandList  = brandsRepository.brands
 
+    val brandList = brandsRepository.brands
 
     class Factory(val app: Application): ViewModelProvider.Factory{
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {

@@ -12,13 +12,13 @@ import com.barlipdev.fitrite.ui.home.addCollection.BrandAdapter
 import com.bumptech.glide.Glide
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data : List<Collection>?){
+fun bindCollectionsRecyclerView(recyclerView: RecyclerView, data : List<Collection>?){
     val adapter = recyclerView.adapter as HomeCollectionAdapter
     adapter.submitList(data)
 }
 
 @BindingAdapter("brandList")
-fun bindBrandRecyclerView(recyclerView: RecyclerView,data : List<Brand>?){
+fun bindRecyclerView(recyclerView: RecyclerView,data : List<Brand>?){
     val adapter = recyclerView.adapter as BrandAdapter
     adapter.submitList(data)
 }

@@ -37,7 +37,7 @@ class BrandFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        binding.brandlist.adapter = BrandAdapter()
+        binding.brandlistRecyclerView.adapter = BrandAdapter()
 
         return binding.root
 

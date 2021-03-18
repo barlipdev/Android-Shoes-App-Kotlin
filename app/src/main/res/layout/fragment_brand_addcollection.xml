@@ -23,14 +23,14 @@
         android:textStyle="bold"
         android:paddingLeft="15dp"
         android:paddingTop="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/brandlist"
-        app:layout_constraintStart_toStartOf="@+id/brandlist"
+        app:layout_constraintEnd_toEndOf="@+id/brandlistRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/brandlistRecyclerView"
         app:layout_constraintTop_toTopOf="parent" />
 
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/brandlist"
+        android:id="@+id/brandlistRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

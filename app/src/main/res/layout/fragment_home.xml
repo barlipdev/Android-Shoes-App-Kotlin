@@ -24,8 +24,8 @@
         android:textColor="@color/colorTitleBlack"
         android:textSize="40dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/brandlist"
-        app:layout_constraintStart_toStartOf="@+id/brandlist"
+        app:layout_constraintEnd_toEndOf="@+id/brandlistRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/brandlistRecyclerView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton

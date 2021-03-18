@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.barlipdev.fitrite.databinding.BrandItemBinding
 import com.barlipdev.fitrite.domain.Brand
 
-class BrandAdapter(): ListAdapter<Brand,BrandAdapter.BrandViewHolder>(DiffCallback) {
+class BrandAdapter: ListAdapter<Brand,BrandAdapter.BrandViewHolder>(DiffCallback) {
 
     class BrandViewHolder(private val binding: BrandItemBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(brand: Brand){
