@@ -27,6 +27,7 @@ fun NetworkBrandContainer.asDomainModel(): List<Brand>{
 fun NetworkBrandContainer.asDatabaseModel(): Array<DatabaseBrand>{
     return brands.map{
         DatabaseBrand(
+            idBrand = it.brandId,
             name = it.name,
             image = it.image
         )

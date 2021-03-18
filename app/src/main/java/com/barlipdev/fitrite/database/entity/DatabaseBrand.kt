@@ -7,6 +7,7 @@ import com.barlipdev.fitrite.domain.Brand
 @Entity(tableName = "brand")
 data class DatabaseBrand(
     @PrimaryKey
+    val idBrand: String,
     val image: String,
     val name: String
 )

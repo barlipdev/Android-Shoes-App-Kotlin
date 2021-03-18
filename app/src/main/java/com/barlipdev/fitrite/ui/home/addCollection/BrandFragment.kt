@@ -23,19 +23,8 @@ class BrandFragment : Fragment() {
     private val viewModel: BrandViewModel by lazy { 
         val activity = requireNotNull(this.activity){
             "You can only access the viewModel after onViewCreated()"
-
         }
         ViewModelProvider(this,BrandViewModel.Factory(activity.application)).get(BrandViewModel::class.java)
-    }
-
-    private var viewModelAdapter: BrandAdapter? = null
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
-        super.onViewCreated(view,savedInstanceState)
-        viewModel.brandList.observe(viewLifecycleOwner, Observer<List<Brand>>{
-            brandList -> brandList?.apply {
-                viewModelAdapter?.brands = brandList}
-        })
     }
 
     override fun onCreateView(
@@ -43,67 +32,15 @@ class BrandFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding: FragmentBrandAddcollectionBinding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_brand_addcollection,
-            container,
-            false
-        )
+        val binding = FragmentBrandAddcollectionBinding.inflate(inflater,container,false)
 
-        binding.setLifecycleOwner(viewLifecycleOwner)
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        viewModelAdapter = BrandAdapter(BrandClick{
-            val packageManager = context?.packageManager ?: return@BrandClick
-        })
-
-        binding.root.findViewById<RecyclerView>(R.id.brandlist).apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = viewModelAdapter
-        }
+        binding.brandlist.adapter = BrandAdapter()
 
         return binding.root
-    }
 
-    class BrandClick(val block: (Brand) -> Unit){
-        fun onClick(brand: Brand){
-            Log.d("Click",brand.name)
-        }
-    }
-
-    class BrandAdapter(val callback: BrandClick) : RecyclerView.Adapter<BrandViewHolder>(){
-
-        var brands: List<Brand> = emptyList()
-        set(value){
-            field = value
-            notifyDataSetChanged()
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BrandViewHolder {
-            val withDataBinding: BrandItemBinding = DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context),
-                BrandViewHolder.LAYOUT,
-                parent,
-                false)
-            return BrandViewHolder(withDataBinding)
-        }
-
-        override fun onBindViewHolder(holder: BrandViewHolder, position: Int) {
-            holder.viewDataBinding.also {
-                it.brand = brands[position]
-                it.callbackBrand = callback
-            }
-        }
-
-        override fun getItemCount() = brands.size
-
-    }
-
-    class BrandViewHolder(val viewDataBinding: BrandItemBinding) : RecyclerView.ViewHolder(viewDataBinding.root){
-        companion object {
-            @LayoutRes
-            val LAYOUT = R.layout.brand_item
-        }
     }
 
 }

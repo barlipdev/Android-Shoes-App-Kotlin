@@ -6,9 +6,6 @@
         <variable
             name="brand"
             type="com.barlipdev.fitrite.domain.Brand" />
-        <variable
-            name="callbackBrand"
-            type="com.barlipdev.fitrite.ui.home.addCollection.BrandFragment.BrandClick" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +18,6 @@
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/cardview_light_background"
             app:cardCornerRadius="15dp"
-            android:onClick="@{() -> callbackBrand.onClick(brand)}"
             app:cardElevation="5dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,15 +57,16 @@
                     android:layout_alignBottom="@+id/brand_photo"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="1dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorTitleBlack"
                     android:text="@{brand.name}"
+                    android:textColor="@color/colorTitleBlack"
                     android:textSize="20dp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.709"
+                    app:layout_constraintHorizontal_bias="0.755"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.709" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
