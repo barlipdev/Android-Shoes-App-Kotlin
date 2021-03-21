@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.barlipdev.fitrite.R
 import com.barlipdev.fitrite.domain.Brand
 import com.barlipdev.fitrite.domain.Collection
-import com.barlipdev.fitrite.ui.home.addCollection.BrandAdapter
+import com.barlipdev.fitrite.domain.Shoe
+import com.barlipdev.fitrite.ui.home.brand.BrandAdapter
+import com.barlipdev.fitrite.ui.home.shoe.ShoeAdapter
 import com.bumptech.glide.Glide
 
 @BindingAdapter("listData")
@@ -18,8 +20,14 @@ fun bindCollectionsRecyclerView(recyclerView: RecyclerView, data : List<Collecti
 }
 
 @BindingAdapter("brandList")
-fun bindRecyclerView(recyclerView: RecyclerView,data : List<Brand>?){
+fun bindBrandRecyclerView(recyclerView: RecyclerView, data : List<Brand>?){
     val adapter = recyclerView.adapter as BrandAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("shoeList")
+fun bindShoeRecyclerView(recyclerView: RecyclerView, data: List<Shoe>?){
+    val adapter= recyclerView.adapter as ShoeAdapter
     adapter.submitList(data)
 }
 

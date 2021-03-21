@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.home.brand.BrandFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.barlipdev.fitrite.ui.home.shoe.ShoeViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/shoeLabel"
+            android:text="Shoes"
+            android:textSize="40dp"
+            android:textColor="@color/colorTitleBlack"
+            android:textStyle="bold"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/shoelistRecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/shoelistRecyclerView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/shoelistRecyclerView"
+            android:layout_width="414dp"
+            android:layout_height="660dp"
+            android:scrollbars="vertical"
+            app:shoeList="@{viewModel.shoesList}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shoeLabel"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/shoe_item">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

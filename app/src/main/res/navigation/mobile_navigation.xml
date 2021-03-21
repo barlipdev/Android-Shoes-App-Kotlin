@@ -3,19 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/brandFragment">
+    app:startDestination="@id/navigation_home">
 
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.barlipdev.fitrite.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:label="@string/title_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_brandFragment"
+            app:destination="@id/brandFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.barlipdev.fitrite.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="com.barlipdev.fitrite.ui.home.HomeFragment"
+        android:label="@string/title_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -24,7 +30,19 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/brandFragment"
-        android:name="com.barlipdev.fitrite.ui.home.addCollection.BrandFragment"
+        android:name="com.barlipdev.fitrite.ui.home.brand.BrandFragment"
         android:label="fragment_brand_addcollection"
-        tools:layout="@layout/fragment_brand_addcollection" />
+        tools:layout="@layout/fragment_brand" >
+        <action
+            android:id="@+id/action_brandFragment_to_shoeFragment"
+            app:destination="@id/shoeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoeFragment"
+        android:name="com.barlipdev.fitrite.ui.home.shoe.ShoeFragment"
+        android:label="ShoeFragment" >
+        <argument
+            android:name="currentBrand"
+            app:argType="com.barlipdev.fitrite.domain.Brand" />
+    </fragment>
 </navigation>

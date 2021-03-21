@@ -1,16 +1,14 @@
 package com.barlipdev.fitrite.network
 
-import com.barlipdev.fitrite.database.entity.DatabaseBrand
 import com.barlipdev.fitrite.network.dto.BrandDTO
 import com.barlipdev.fitrite.network.dto.CollectionDTO
-import com.barlipdev.fitrite.network.dto.NetworkBrandContainer
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.barlipdev.fitrite.network.dto.ShoeDTO
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 private const val BASE_URL = "https://fit-rite.herokuapp.com/api/fitrite/"
 
@@ -23,6 +21,8 @@ interface FitriteApiService {
     suspend fun getBrandsProperties(): List<BrandDTO>
     @GET("shoes-collection")
     suspend fun getCollectionProperties(): List<CollectionDTO>
+    @GET("shoes/brands/{idBrand}")
+    suspend fun getShoesByBrandId(@Path("idBrand") idBrand: String): List<ShoeDTO>
 }
 
 private val retrofit = Retrofit.Builder()

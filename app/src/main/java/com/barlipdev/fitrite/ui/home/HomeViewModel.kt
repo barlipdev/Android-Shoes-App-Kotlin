@@ -14,6 +14,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application){
     private val _status = MutableLiveData<FitriteApiStatus>()
     val status: LiveData<FitriteApiStatus>
         get() = _status
+    private val _navigateToBrands = MutableLiveData<Boolean>()
+    val navigateToBrands: LiveData<Boolean>
+        get() = _navigateToBrands
 
     private val database = getDatabase(application)
     private val collectionsRepository = CollectionsRepository(database)
@@ -28,6 +31,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application){
         viewModelScope.launch {
             collectionsRepository.refreshCollections()
         }
+    }
+
+    fun onAddButtonClicked(){
+        _navigateToBrands.value = true
+    }
+
+    fun onBrandsNavigated(){
+        _navigateToBrands.value = false
     }
 
     class Factory(val app: Application) : ViewModelProvider.Factory{

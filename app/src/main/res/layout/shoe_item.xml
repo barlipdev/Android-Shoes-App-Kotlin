@@ -4,18 +4,14 @@
 
     <data>
         <variable
-            name="brand"
-            type="com.barlipdev.fitrite.domain.Brand" />
-        <variable
-            name="clickListener"
-            type="com.barlipdev.fitrite.ui.home.brand.BrandAdapter.BrandListener" />
+            name="shoe"
+            type="com.barlipdev.fitrite.domain.Shoe" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:onClick="@{()-> clickListener.onClick(brand)}">
+        android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -42,8 +38,8 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/shadow"
                     android:paddingTop="5dp"
-                    android:src="@drawable/adidas"
-                    app:imageUrl="@{brand.media.imageUrl}"
+                    android:src="@drawable/shoe"
+                    app:imageUrl="@{shoe.media.imageUrl}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.119"
@@ -61,7 +57,7 @@
                     android:layout_alignBottom="@+id/shoe_photo"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="1dp"
-                    android:text="@{brand.name}"
+                    android:text="@{shoe.modelName}"
                     android:textColor="@color/colorTitleBlack"
                     android:textSize="20dp"
                     android:textStyle="bold"

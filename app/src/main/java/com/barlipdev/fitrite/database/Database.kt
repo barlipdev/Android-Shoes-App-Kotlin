@@ -4,15 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.barlipdev.fitrite.database.entity.BrandDao
-import com.barlipdev.fitrite.database.entity.CollectionDao
-import com.barlipdev.fitrite.database.entity.DatabaseBrand
-import com.barlipdev.fitrite.database.entity.DatabaseCollection
+import com.barlipdev.fitrite.database.entity.*
 
-@Database(entities = [DatabaseBrand::class,DatabaseCollection::class], version = 1)
+@Database(entities = [DatabaseBrand::class,DatabaseCollection::class,DatabaseShoe::class], version = 1)
 abstract class FitriteDatabase : RoomDatabase() {
     abstract val brandDao : BrandDao
     abstract val collectionDao: CollectionDao
+    abstract val shoesDao: ShoeDao
 }
 
 private lateinit var INSTANCE : FitriteDatabase

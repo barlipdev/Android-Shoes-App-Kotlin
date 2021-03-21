@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.barlipdev.fitrite.database.getDatabase
-import com.barlipdev.fitrite.repository.BrandsRepository
+import com.barlipdev.fitrite.repository.FitriteRepository
 import retrofit2.HttpException
 
 class RefreshDataWorker(appContext: Context, params: WorkerParameters): CoroutineWorker(appContext, params){
@@ -15,7 +15,7 @@ class RefreshDataWorker(appContext: Context, params: WorkerParameters): Coroutin
 
     override suspend fun doWork(): Result {
         val database = getDatabase(applicationContext)
-        val repository = BrandsRepository(database)
+        val repository = FitriteRepository(database)
         return try{
             repository.refreshBrands()
             Result.success()

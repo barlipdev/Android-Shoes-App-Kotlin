@@ -1,6 +1,5 @@
-package com.barlipdev.fitrite.ui.home.addCollection
+package com.barlipdev.fitrite.ui.home.brand
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.barlipdev.fitrite.databinding.BrandItemBinding
 import com.barlipdev.fitrite.domain.Brand
 
-class BrandAdapter: ListAdapter<Brand,BrandAdapter.BrandViewHolder>(DiffCallback) {
+class BrandAdapter(val brandClickListener: BrandListener): ListAdapter<Brand,BrandAdapter.BrandViewHolder>(DiffCallback) {
 
     class BrandViewHolder(private val binding: BrandItemBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(brand: Brand){
+        fun bind(clickListener: BrandListener,brand: Brand){
             binding.brand = brand
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -36,7 +36,11 @@ class BrandAdapter: ListAdapter<Brand,BrandAdapter.BrandViewHolder>(DiffCallback
 
     override fun onBindViewHolder(holder: BrandViewHolder, position: Int) {
         val brand = getItem(position)
-        holder.bind(brand)
+        holder.bind(brandClickListener,brand)
     }
 
+    class BrandListener(val clickListener: (brand: Brand) -> Unit) {
+        fun onClick(brand: Brand) = clickListener(brand)
+    }
 }
+

@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.barlipdev.fitrite.R
 import com.barlipdev.fitrite.databinding.FragmentHomeBinding
 
@@ -31,6 +32,18 @@ class HomeFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.collectionList.adapter = HomeCollectionAdapter()
+        
+        viewModel.navigateToBrands.observe(viewLifecycleOwner, Observer{ isNavigate -> 
+            isNavigate?.let {
+                if (this.findNavController().currentDestination?.id == R.id.navigation_home){
+                    if (isNavigate){
+                        this.findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToBrandFragment())
+                        viewModel.onBrandsNavigated()
+                    }
+                }
+
+            }
+        })
 
         return binding.root
     }

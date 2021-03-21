@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.home.addCollection.BrandFragment">
+    tools:context=".ui.home.brand.BrandFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.barlipdev.fitrite.ui.home.addCollection.BrandViewModel" />
+            type="com.barlipdev.fitrite.ui.home.brand.BrandViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -28,20 +28,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/brandlistRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="414dp"
+        android:layout_height="660dp"
         android:scrollbars="vertical"
+        app:brandList="@{viewModel.brandList}"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/brandLabel"
-        app:layout_constraintVertical_bias="0.001"
-        app:brandList="@{viewModel.brandList}"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/brand_item">
 
     </androidx.recyclerview.widget.RecyclerView>
