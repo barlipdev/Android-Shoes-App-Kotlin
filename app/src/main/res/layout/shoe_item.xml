@@ -6,12 +6,16 @@
         <variable
             name="shoe"
             type="com.barlipdev.fitrite.domain.Shoe" />
+        <variable
+            name="clickListener"
+            type="com.barlipdev.fitrite.ui.home.shoe.ShoeAdapter.ShoeListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:onClick="@{()-> clickListener.onClick(shoe)}">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

@@ -9,4 +9,9 @@
     <color name="colorTitleBlack">#0e1111</color>
     <color name="hyperLink">#2196F3</color>]
     <color name="cream">#edd087</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
 </resources>

@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.home.brand.BrandFragment">
+    tools:context=".ui.home.shoe.size.ShoeSizeSelector">
 
     <data>
         <variable
@@ -44,6 +44,7 @@
             tools:listitem="@layout/shoe_item">
 
         </androidx.recyclerview.widget.RecyclerView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

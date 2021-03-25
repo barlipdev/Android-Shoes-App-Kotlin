@@ -44,5 +44,17 @@
         <argument
             android:name="currentBrand"
             app:argType="com.barlipdev.fitrite.domain.Brand" />
+        <action
+            android:id="@+id/action_shoeFragment_to_shoeSizeSelector"
+            app:destination="@id/shoeSizeSelector" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoeSizeSelector"
+        android:name="com.barlipdev.fitrite.ui.home.shoe.size.ShoeSizeSelector"
+        android:label="fragment_shoe_size_selector"
+        tools:layout="@layout/fragment_shoe_size_selector" >
+        <argument
+            android:name="shoe"
+            app:argType="com.barlipdev.fitrite.domain.Shoe" />
     </fragment>
 </navigation>

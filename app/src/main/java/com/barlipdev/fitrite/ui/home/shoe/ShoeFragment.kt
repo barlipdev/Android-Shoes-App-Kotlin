@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.barlipdev.fitrite.R
 import com.barlipdev.fitrite.databinding.FragmentShoeBinding
 
 class ShoeFragment : Fragment() {
@@ -30,7 +33,20 @@ class ShoeFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        binding.shoelistRecyclerView.adapter = ShoeAdapter()
+        binding.shoelistRecyclerView.adapter = ShoeAdapter(ShoeAdapter.ShoeListener{
+            shoe -> viewModel.onShoeClicked(shoe)
+        })
+
+        viewModel.navigateToShoeSize.observe(viewLifecycleOwner, Observer { shoe ->
+            shoe?.let {
+                if (this.findNavController().currentDestination?.id == R.id.shoeFragment){
+                    if (shoe!=null){
+                        this.findNavController().navigate(ShoeFragmentDirections.actionShoeFragmentToShoeSizeSelector(shoe))
+                        viewModel.onShoeNavigated()
+                    }
+                }
+            }
+        })
 
         return binding.root
     }

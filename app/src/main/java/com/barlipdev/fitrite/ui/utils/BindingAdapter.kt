@@ -31,22 +31,6 @@ fun bindShoeRecyclerView(recyclerView: RecyclerView, data: List<Shoe>?){
     adapter.submitList(data)
 }
 
-@BindingAdapter("apiStatus")
-fun bindStatus(statusImageView: ImageView, status: FitriteApiStatus?) {
-    when (status) {
-        FitriteApiStatus.LOADING -> {
-            statusImageView.visibility = View.VISIBLE
-            statusImageView.setImageResource(R.drawable.loading_animation)
-        }
-        FitriteApiStatus.ERROR -> {
-            statusImageView.visibility = View.VISIBLE
-            statusImageView.setImageResource(R.drawable.ic_connection_error)
-        }
-        FitriteApiStatus.DONE -> {
-            statusImageView.visibility = View.GONE
-        }
-    }
-}
 @BindingAdapter("goneIfNotNull")
 fun goneIfNotNull(view: View, it: Any?){
     view.visibility = if (it != null) View.GONE else View.VISIBLE

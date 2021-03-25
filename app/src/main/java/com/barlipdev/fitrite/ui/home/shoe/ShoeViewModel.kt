@@ -1,21 +1,22 @@
 package com.barlipdev.fitrite.ui.home.shoe
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
 import com.barlipdev.fitrite.database.getDatabase
 import com.barlipdev.fitrite.domain.Brand
+import com.barlipdev.fitrite.domain.Shoe
 import com.barlipdev.fitrite.repository.FitriteRepository
 import kotlinx.coroutines.launch
-
 
 class ShoeViewModel(application: Application,brand: Brand) : AndroidViewModel(application) {
 
     private val database = getDatabase(application)
     private val fitriteRepository = FitriteRepository(database)
 
+    private val _navigateToShoeSize = MutableLiveData<Shoe>()
+    val navigateToShoeSize: LiveData<Shoe>
+        get() = _navigateToShoeSize
 
     init{
         refreshData(brand.idBrand)
@@ -23,11 +24,20 @@ class ShoeViewModel(application: Application,brand: Brand) : AndroidViewModel(ap
 
     fun refreshData(brandId: String){
         viewModelScope.launch {
-            fitriteRepository.refreshShoe(brandId)
+                fitriteRepository.refreshShoe(brandId)
         }
     }
 
     val shoesList = fitriteRepository.getShoesByBrandId(brand.idBrand)
+
+    fun onShoeClicked(shoe: Shoe){
+        _navigateToShoeSize.value = shoe
+    }
+
+    fun onShoeNavigated(){
+        _navigateToShoeSize.value = null
+    }
+
 
     class Factory(val app: Application, val brand: Brand): ViewModelProvider.Factory{
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {

@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.barlipdev.fitrite.databinding.ShoeItemBinding
 import com.barlipdev.fitrite.domain.Shoe
 
-class ShoeAdapter(): ListAdapter<Shoe,ShoeAdapter.ShoeViewHolder>(DiffCallback) {
+class ShoeAdapter(val shoeClickListener: ShoeListener): ListAdapter<Shoe,ShoeAdapter.ShoeViewHolder>(DiffCallback) {
 
     class ShoeViewHolder(private val binding: ShoeItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(shoe: Shoe){
+        fun bind(clickListener: ShoeListener,shoe: Shoe){
+            binding.clickListener = clickListener
             binding.shoe = shoe
             binding.executePendingBindings()
         }
@@ -34,7 +35,11 @@ class ShoeAdapter(): ListAdapter<Shoe,ShoeAdapter.ShoeViewHolder>(DiffCallback) 
 
     override fun onBindViewHolder(holder: ShoeViewHolder, position: Int) {
         val shoe = getItem(position)
-        holder.bind(shoe)
+        holder.bind(shoeClickListener,shoe)
+    }
+
+    class ShoeListener(val clickListener: (shoe: Shoe) -> Unit){
+        fun onClick(shoe: Shoe) = clickListener(shoe)
     }
 
 }

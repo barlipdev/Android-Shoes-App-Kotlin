@@ -7,13 +7,9 @@ import com.barlipdev.fitrite.repository.CollectionsRepository
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 
-enum class FitriteApiStatus { LOADING, ERROR, DONE }
 
 class HomeViewModel(application: Application) : AndroidViewModel(application){
 
-    private val _status = MutableLiveData<FitriteApiStatus>()
-    val status: LiveData<FitriteApiStatus>
-        get() = _status
     private val _navigateToBrands = MutableLiveData<Boolean>()
     val navigateToBrands: LiveData<Boolean>
         get() = _navigateToBrands
